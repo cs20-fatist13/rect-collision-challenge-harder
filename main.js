@@ -2,6 +2,7 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 canvas.width = 900;
 canvas.height = 600;
+console.log("start");
 
 let walls = [];
 
@@ -9,8 +10,8 @@ let walls = [];
 let character = {
   x: 0,
   y: 300,
-  width: 20,
-  height: 20,
+  width: 10,
+  height: 10,
   speed: 5,
   dx: 0,
   dy: 0,
@@ -97,6 +98,25 @@ function moveCharacter() {
     }
   }
 
+  //check for walls overlapping
+  //for (let i = 0; i < walls.length; i++) {
+  //const wall = walls[i];
+  //for (let j = i + 1; j < walls.length; j++) {
+  //const wall2 = walls[j];
+  //if (
+  //wall.x < wall2.x + wall2.width &&
+  //wall.x + wall.width > wall2.x &&
+  //wall.y < wall2.y + wall2.height &&
+  //wall.y + wall.height > wall2.y
+  //) {
+  // collision detected, move character back
+  //wall.x = wall.x - wall.dx;
+  //wall.y = wall.y - wall.dy;
+  //break;
+  //}
+  //}
+  //}
+
   // clear canvas and redraw everything
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -114,11 +134,10 @@ function moveCharacter() {
 }
 
 getWalls();
-spacePressed();
 
 // reload page when space pressed
 function spacePressed(e) {
-  if (e.key === " ") {
-    document.location.reload();
+  if (e.key === " " || e.key === "Spacebar") {
+    location.reload();
   }
 }
